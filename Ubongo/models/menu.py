@@ -14,12 +14,13 @@ class Menu(Componente):
         self.botonUnJugador = Boton((0, 0, 0), (255, 255, 255), (2*self.x + self.width)/2 - 250/2, 50 + 100/3 + self.height / 3 + 50, 250, 70, "1 Jugador")
         self.botonDosJugadores = Boton((0, 0, 0), (255, 255, 255), self.botonUnJugador.x, self.botonUnJugador.y + self.botonUnJugador.height + 25, 250, 70, "2 Jugadores")
         self.botonTresJugadores = Boton((0, 0, 0), (255, 255, 255), self.botonDosJugadores.x, self.botonDosJugadores.y + self.botonDosJugadores.height + 25, 250, 70, "3 Jugadores")
-        self.botonDificultadNormal = Boton((0, 0, 0), (255, 255, 255), (2*self.x + self.width)/2 - 250/2, 50 + 100/3 + self.height / 2, 250, 70, "Normal (3 piezas)")
-
+        self.botonDificultadNormal = Boton((0, 0, 0), (255, 255, 255), (2*self.x + self.width)/2 - 250/2, 50 + 100/3 + self.height / 2, 250, 70, "Normal")
+        self.botonDificultadDificil = Boton((0, 0, 0), (255, 255, 255), self.botonDificultadNormal.x, self.botonDificultadNormal.y + self.botonDificultadNormal.height + 40, 250, 70, "Difícil (4 piezas)")
         self.botonRegresar = Boton((0, 0, 0), (255, 255, 255), 100, 100 , 250, 70, "Regresar")
         self.enPantallaInicio = True
         #enJugadores: variable que determina si estas en la pantalla de elegir jugadores o no
         self.enJugadores = False
+        self.enDificultad = False
 
     def dibujarMenu(self):
         self.window.blit(menu, (self.x, self.y))
@@ -30,8 +31,6 @@ class Menu(Componente):
             self.botonDificultad.draw(self.window)
         elif self.enJugadores:
             self.botonUnJugador.draw(self.window)
-            self.botonDosJugadores.draw(self.window)
-            self.botonTresJugadores.draw(self.window)
             self.botonRegresar.draw(self.window)
         elif self.enDificultad:
             self.botonDificultadNormal.draw(self.window)
@@ -62,7 +61,11 @@ class Menu(Componente):
     def validarHoverPosicionDificultad(self, pos):
         if self.botonDificultadNormal.isOver(pos):
             self.botonDificultadNormal.hover((127, 127, 127), (0, 0, 0))
+        elif self.botonDificultadDificil.isOver(pos):
+            self.botonDificultadDificil.hover((127, 127, 127), (0, 0, 0))
+        else:
             self.botonDificultadNormal.setColores((0, 0, 0), (255, 255, 255))
+            self.botonDificultadDificil.setColores((0, 0, 0), (255, 255, 255))
 
     def validarHoverPosicionRegresar(self, pos):
         if self.botonRegresar.isOver(pos):

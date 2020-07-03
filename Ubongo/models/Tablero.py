@@ -1,7 +1,7 @@
 import pygame
 from models.componente import Componente
 menu = pygame.image.load('assets/Fondos/Ubongo-Hero.jpg')
-tablero = pygame.image.load('assets/Tablero/Tablero.png')
+tablero = pygame.image.load('assets/Tablero/tablero.png')
 tablero = pygame.transform.scale(tablero, (890, 290))
 import random as rnd
 from models.factory.GemaFactory import GemaFactory
